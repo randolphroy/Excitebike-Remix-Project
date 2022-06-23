@@ -2,6 +2,8 @@ window.onload = () => {
 
     let totalFrames = 0;
 
+    let difficulty = 1;
+
     let obstaclesArr = [];
 
     let intervalId = null;
@@ -100,19 +102,21 @@ window.onload = () => {
             roadMargin();
             totalFrames++;
             document.querySelector('#score').innerText = `Score: ${Math.floor(totalFrames / 60)}`;
-            if(totalFrames % 240 ===0) {
+            if(totalFrames % 180 === 0) {
             
                let randomObstacleYposition = Math.round(Math.random() * ((myCanvas.height - 40 - 80) - (myCanvas.height - 260))) + (myCanvas.height - 260);
                obstaclesArr.push(new imageObject(myCanvas.width, randomObstacleYposition, 40, 40, myCanvas.width + 5, randomObstacleYposition + 3, 30, 35, obstacleImg));
             }
-
+            if (totalFrames % 600 === 0) {
+                difficulty += 1;
+            }
        
            myBike.updatePosition();
 
            //obstacle movement
            for(let i = 0; i < obstaclesArr.length; i++) {
-                obstaclesArr[i].x -= 1;
-                obstaclesArr[i].hitboxX -= 1;
+                obstaclesArr[i].x -= 1 * difficulty;
+                obstaclesArr[i].hitboxX -= 1 * difficulty;
                 if (myBike.crashWith(obstaclesArr[i])) {
                     clearInterval(intervalId);
                     alert ('You Lost!')
