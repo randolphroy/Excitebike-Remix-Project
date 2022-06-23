@@ -21,13 +21,13 @@ window.onload = () => {
         const ctx = myCanvas.getContext('2d');
 
         const roadImg = new Image();
-        roadImg.src = './images/background.png';
+        roadImg.src = './Images/background.png';
 
         const bikeImg = new Image();
-        bikeImg.src =  './images/character.png';
+        bikeImg.src =  './Images/character.png';
 
         const obstacleImg = new Image();
-        obstacleImg.src = './images/obstacles.png';
+        obstacleImg.src = './Images/obstacles.png';
 
         class rectangleObject {
             constructor(x, y, width, height, hitboxX, hitboxY, hitboxWidth, hitboxHeight) {
