@@ -119,7 +119,7 @@ window.onload = () => {
                 obstaclesArr[i].hitboxX -= 1 * difficulty;
                 if (myBike.crashWith(obstaclesArr[i])) {
                     clearInterval(intervalId);
-                    alert ('You Lost!')
+                    alert (`You lost! Better luck next time!`)
                 };
              }
 
@@ -127,17 +127,14 @@ window.onload = () => {
             
             myRoad.draw();
 
-            //ctx.fillStyle = 'black';
-            //ctx.fillText('Score: ' + score, 100, 100);
-            
             for(let i = 0; i < obstaclesArr.length; i++) {
                 obstaclesArr[i].draw();
-                obstaclesArr[i].drawHitBox();
+                //obstaclesArr[i].drawHitBox();
 
             }
             
             myBike.draw();
-            myBike.drawHitBox();
+            //myBike.drawHitBox();
             
         }
 

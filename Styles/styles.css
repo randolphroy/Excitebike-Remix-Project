@@ -41,5 +41,6 @@ body {
     left: 50%;
     text-align: center;
     transform: translateX(-50%);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   
