@@ -5,6 +5,8 @@ window.onload = () => {
     let obstaclesArr = [];
 
     let intervalId = null;
+    
+    let score = 0;
 
     document.getElementById('start-button').onclick = () => {
         startGame();
@@ -91,17 +93,17 @@ window.onload = () => {
         }
         
         const myRoad = new imageObject(0, 0, myCanvas.width, myCanvas.height, null, null, null, null, roadImg);
-        const myBike = new imageObject(50, myCanvas.height - 150, 75, 75, 50, myCanvas.height - 105, 75, 30, bikeImg);
+        const myBike = new imageObject(50, myCanvas.height - 150, 75, 75, 50, myCanvas.height - 105, 75, 25, bikeImg);
         //const myObstacle = new imageObject(myCanvas.width, myCanvas.height - 225, 40, 40, obstacleImg);
 
         function updateGame() {
             roadMargin();
             totalFrames++;
-
+            document.querySelector('#score').innerText = `Score: ${Math.floor(totalFrames / 60)}`;
             if(totalFrames % 240 ===0) {
             
-               let randomObstacleYposition = Math.round(Math.random() * ((myCanvas.height - 40 - 80) - (myCanvas.height - 270))) + (myCanvas.height - 270);
-               obstaclesArr.push(new imageObject(myCanvas.width, randomObstacleYposition, 40, 40, myCanvas.width, randomObstacleYposition, 40, 40, obstacleImg));
+               let randomObstacleYposition = Math.round(Math.random() * ((myCanvas.height - 40 - 80) - (myCanvas.height - 260))) + (myCanvas.height - 260);
+               obstaclesArr.push(new imageObject(myCanvas.width, randomObstacleYposition, 40, 40, myCanvas.width + 5, randomObstacleYposition + 3, 30, 35, obstacleImg));
             }
 
        
@@ -120,10 +122,14 @@ window.onload = () => {
             ctx.clearRect(0, 0, myCanvas.width, myCanvas.height)
             
             myRoad.draw();
+
+            //ctx.fillStyle = 'black';
+            //ctx.fillText('Score: ' + score, 100, 100);
             
             for(let i = 0; i < obstaclesArr.length; i++) {
                 obstaclesArr[i].draw();
                 obstaclesArr[i].drawHitBox();
+
             }
             
             myBike.draw();
@@ -152,7 +158,6 @@ window.onload = () => {
                 myBike.x = roadRight;
                 myBike.velX = 0;
             }
-            
         }
 
         roadImg.onload = () => {
@@ -165,16 +170,16 @@ window.onload = () => {
         document.addEventListener('keydown', (event) => {
             switch(event.code) {
                 case 'ArrowUp':
-                    myBike.velY -= 2;
+                    myBike.velY -= 1.5;
                     break;
                 case 'ArrowDown':
-                    myBike.velY += 2;
+                    myBike.velY += 1.5;
                     break;
                 case 'ArrowLeft':
-                    myBike.velX -= 2;
+                    myBike.velX -= 1.5;
                     break;
                 case 'ArrowRight':
-                    myBike.velX += 2;
+                    myBike.velX += 1.5;
                     break;
             }
         })

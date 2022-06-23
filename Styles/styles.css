@@ -32,6 +32,14 @@ body {
   #game-board {
       float: left;
       padding: 0px 20px;
+      position: relative;
   }
   
+  #score {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+  }
   
