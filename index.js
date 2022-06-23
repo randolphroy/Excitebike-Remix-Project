@@ -24,7 +24,7 @@ window.onload = () => {
         roadImg.src = './Images/background.png';
 
         const bikeImg = new Image();
-        bikeImg.src =  './Images/character.png';
+        bikeImg.src =  './Images/Character.png';
 
         const obstacleImg = new Image();
         obstacleImg.src = './Images/obstacles.png';
