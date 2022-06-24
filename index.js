@@ -95,20 +95,20 @@ window.onload = () => {
         }
         
         const myRoad = new imageObject(0, 0, myCanvas.width, myCanvas.height, null, null, null, null, roadImg);
-        const myBike = new imageObject(50, myCanvas.height - 150, 75, 75, 50, myCanvas.height - 105, 75, 25, bikeImg);
+        const myBike = new imageObject(50, myCanvas.height - 150, 75, 75, 55, myCanvas.height - 110, 65, 25, bikeImg);
         //const myObstacle = new imageObject(myCanvas.width, myCanvas.height - 225, 40, 40, obstacleImg);
 
         function updateGame() {
             roadMargin();
             totalFrames++;
             document.querySelector('#score').innerText = `Score: ${Math.floor(totalFrames / 60)}`;
-            if(totalFrames % 180 === 0) {
+            if(totalFrames % 120 === 0) {
             
                let randomObstacleYposition = Math.round(Math.random() * ((myCanvas.height - 40 - 80) - (myCanvas.height - 260))) + (myCanvas.height - 260);
-               obstaclesArr.push(new imageObject(myCanvas.width, randomObstacleYposition, 40, 40, myCanvas.width + 5, randomObstacleYposition + 3, 30, 35, obstacleImg));
+               obstaclesArr.push(new imageObject(myCanvas.width, randomObstacleYposition, 40, 40, myCanvas.width + 10, randomObstacleYposition + 10, 20, 20, obstacleImg));
             }
             if (totalFrames % 600 === 0) {
-                difficulty += 1;
+                difficulty += 1.5;
             }
        
            myBike.updatePosition();
@@ -171,16 +171,16 @@ window.onload = () => {
         document.addEventListener('keydown', (event) => {
             switch(event.code) {
                 case 'ArrowUp':
-                    myBike.velY -= 1.5;
+                    myBike.velY -= 1;
                     break;
                 case 'ArrowDown':
-                    myBike.velY += 1.5;
+                    myBike.velY += 1;
                     break;
                 case 'ArrowLeft':
-                    myBike.velX -= 1.5;
+                    myBike.velX -= 1;
                     break;
                 case 'ArrowRight':
-                    myBike.velX += 1.5;
+                    myBike.velX += 1;
                     break;
             }
         })
